@@ -1,14 +1,13 @@
-
+# coding: utf-8 
 #!/user/bin/env python3
-# -*- coding: utf-8 -*-
+
 
 """
-我的学习测试 module
+zucai
 """
 __author__ = 'Zhang Hao'
 
 import  re  
-import	functools
 
 
 #############################
@@ -146,7 +145,6 @@ def reslut_trans2simp( result_p ):
 	return	result_simple
 		
 def result_trans( func):
-	@functools.wraps(func)
 	def wrapper( *args,**kw ):		
 		return	reslut_trans2simp(func( *args,**kw ))	
 	return	wrapper	
