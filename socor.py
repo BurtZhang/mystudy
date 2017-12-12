@@ -81,6 +81,44 @@ def	budan_shengsi_calc_ph(a,b,d1,e):
 	
 	return  ph
 
+def budan_pingshoucalc(a1,p1,a2,p2,d1,d2):
+	"""
+	x1 : a1 ,a2
+	x2 : a1 ,p2
+	x3 : p1 ,a2
+	x4 : p1 ,p2
+	y  : first  hgy
+	z  : second hgy
+	e  : alpha
+
+
+	x1+x2+x3+x4  =1
+	x1*a1*a2     =1+y+z-e
+	x2*a1*p2+z   =1+y+z-e
+	x3*p1*a2+y   =1+y+z-e
+	x4*p1*p2+y+z =1+y+z-e
+	d1*y         =1-e
+	d2*z         =1+y-e
+	 
+	"""
+	det0 =  (a1*p2 + p1*p2 + a1*d1*p2 + a2*d2*p1 + d1*p1*p2 + d2*p1*p2 + d1*d2*p1*p2 + a1*a2*d1*d2 + a1*d1*d2*p2 + a2*d1*d2*p1)
+	
+	detx1 = (p1*p2 + d1*p1*p2 + d2*p1*p2 + d1*d2*p1*p2)
+	detx2 = (a2*d2*p1 + a2*d1*d2*p1)
+	detx3 = (a1*p2 + a1*d1*p2 + a1*d1*d2*p2)
+	detx4 = (a1*a2*d1*d2)
+	dety  = (a1*a2*d2*p1*p2)
+	detz  = (a1*a2*p1*p2 + a1*a2*d1*p1*p2)
+	dete  = (a1*p2 + p1*p2 + a1*d1*p2 + a2*d2*p1 + d1*p1*p2 + d2*p1*p2 + d1*d2*p1*p2 + a1*a2*d1*d2 + a1*d1*d2*p2 + a2*d1*d2*p1 - a1*a2*d1*d2*p1*p2)
+
+	x1 = detx1 / det0
+	x2 = detx2 / det0
+	x3 = detx3 / det0
+	x4 = detx4 / det0
+	y  = dety  / det0
+	z  = detz  / det0
+	e  = dete  / det0
+	return (x1,x2,x3,x4,y,z,e)
 	
 def reslut_trans2simp( result_p ):
 	""" """
